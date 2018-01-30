@@ -1,0 +1,82 @@
+
+<div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Add new item!</h4>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="submit()" role="form" class="form-horizontal"
+                          name="itemCreationForm" novalidate>
+                        <div class="form-group">
+                            <label class="control-label col-lg-1" for="name">Name:</label>
+                            <div class="col-lg-12">
+                            <input type="text" id="name" name="name"
+                                   class="form-control" ng-model="name"
+                                   placeholder="Enter a name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-1" for="category">Category:</label>
+                            <div class="col-lg-12">
+                                <select id="category" class="form-control" ng-model="category">
+                                    <option value="small">small</option>
+                                    <option value="not_too_small">not too small</option>
+                                    <option value="big">big</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-1" for="uri">Photo:</label>
+                            <div class="col-lg-12">
+                            <input type="text" id="uri" class="form-control"
+                                   ng-model="uri"
+                                   placeholder="e.g.">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-lg-12">
+                            <input type="submit" value="Add item into the Store" class="btn btn-primary col-lg-12">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8">
+            <div class="pull-right">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@mdo">add new Item</button>
+                <!--<a href="#!/item" class="btn btn-default" title="Create"><span class="glyphicon glyphicon-plus"></span></a>-->
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th class="col-lg-1">Photo</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th style="width: 100px"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.id}}</td>
+                    <td><img ng-src="{{item.uri}}"  class="img-responsive"></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.category}}</td>
+                    <td>
+                        <a href="" ng-click="deleteItem(item.id)" class="btn btn-xs btn-default" title="delete"><span class="glyphicon glyphicon-trash"></span></a>
+                        <!--<button class="btn btn-danger" ng-click="deleteItem(item.id)" >Remove</button>-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
