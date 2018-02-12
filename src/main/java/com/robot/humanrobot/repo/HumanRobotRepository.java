@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface HumanRobotRepository extends JpaRepository<HumanRobot, Integer>{
 
-    List<HumanRobot> findByStatus(String status);
+    List<HumanRobot> findAllByStatusAndCreator(String status,String creator);
+
+    List<HumanRobot>  findAllByCreator(String creator);
 }

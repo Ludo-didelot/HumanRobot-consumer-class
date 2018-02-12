@@ -3,9 +3,8 @@ package com.robot.humanrobot.model;
 import com.robot.humanrobot.config.datastrategy.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
+import lombok.experimental.Accessors;
 import uk.co.jemos.podam.common.PodamDoubleValue;
-import uk.co.jemos.podam.common.PodamFloatValue;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 import uk.co.jemos.podam.common.PodamStringValue;
 
@@ -15,6 +14,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@Accessors(chain = true)
 @Table(name="HUMANROBOT")
 public class HumanRobot {
 
@@ -43,4 +43,6 @@ public class HumanRobot {
     private String quality_check;
     private Date build_date;
     private Date stock_date;
+    private String creator;
+    private Date techRawCreationDate;
 }

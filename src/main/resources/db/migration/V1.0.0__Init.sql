@@ -12,7 +12,9 @@ CREATE TABLE HumanRobot (
 	currency varchar(255),
 	location varchar(255) DEFAULT 'CHINA',
 	product_id varchar(255) not null,
-	quality_check varchar(3) DEFAULT 'NO'
+	quality_check varchar(3) DEFAULT 'NO',
+	creator varchar(255),
+  tech_raw_creation_date DATE
 
 );
 
