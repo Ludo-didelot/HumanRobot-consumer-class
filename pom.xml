@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.robot.humanrobot</groupId>
-	<artifactId>HumanRobotInc</artifactId>
+	<artifactId>HumanRobotConsumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>HumanRobotInc</name>
-	<description>Factory to produce Human Robot</description>
+	<name>HumanRobotConsumer</name>
+	<description>Factory to consume Human Robot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -109,6 +109,17 @@
             <artifactId>spring-security-config</artifactId>
             <version>RELEASE</version>
         </dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>${spring-kafka.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka-test</artifactId>
+			<version>${spring-kafka.version}</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
 	<build>

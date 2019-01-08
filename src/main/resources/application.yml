@@ -9,8 +9,11 @@ spring:
   h2:
     console:
       enabled: true
+  kafka:
+    consumer:
+      group-id: myGroup3
 server:
-  port: 8082
+  port: 8083
 security:
   basic:
     enabled: true
@@ -21,3 +24,16 @@ admin:
   user:
     name: admin
     password: admin
+kafka:
+  bootstrap-servers: localhost:9092
+  topic: MyTestTopic2
+  auto:
+    offset:
+      reset: earliest
+auto:
+  commit:
+    interval:
+      ms: 100
+enable:
+  auto:
+    commit: true

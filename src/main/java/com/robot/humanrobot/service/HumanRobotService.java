@@ -1,5 +1,6 @@
 package com.robot.humanrobot.service;
 
+
 import com.robot.humanrobot.model.HumanRobot;
 import com.robot.humanrobot.repo.HumanRobotRepository;
 import lombok.Getter;
@@ -28,6 +29,7 @@ import java.util.concurrent.ThreadLocalRandom;
 @Setter
 @EnableAsync
 public class HumanRobotService {
+
     @Autowired
     HumanRobotRepository humanRobotRepository;
     Boolean generationEnded = false;
@@ -51,7 +53,6 @@ public class HumanRobotService {
                     .setName("IRobot-" + humanRobot.getName())
                     .setTechRawCreationDate(new Date())
                     .setCreator(creator);
-
             humanRobotRepository.saveAndFlush(humanRobot);
             System.out.println("generateData - Current thread "+ Thread.currentThread().getId()+" for - "+creator);
             try {
