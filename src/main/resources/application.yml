@@ -14,16 +14,6 @@ spring:
       group-id: myGroup3
 server:
   port: 8083
-security:
-  basic:
-    enabled: true
-  user:
-    name: admin
-    password: admin
-admin:
-  user:
-    name: admin
-    password: admin
 kafka:
   bootstrap-servers: localhost:9092
   topic: MyTestTopic2
@@ -37,3 +27,6 @@ auto:
 enable:
   auto:
     commit: true
+management:
+  security:
+    enabled: false

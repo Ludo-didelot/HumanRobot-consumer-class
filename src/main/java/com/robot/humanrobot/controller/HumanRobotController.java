@@ -3,6 +3,8 @@ package com.robot.humanrobot.controller;
 import com.robot.humanrobot.consumer.ConsumerKafka;
 import com.robot.humanrobot.model.HumanRobot;
 import com.robot.humanrobot.service.HumanRobotService;
+import io.micrometer.core.annotation.Timed;
+import io.micrometer.core.instrument.Metrics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -51,9 +53,16 @@ public class HumanRobotController {
         this.humanRobotService.deleteAll(creator);
         return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
     }
-
+    @Timed(
+            value = "get.human.robot.stat",
+            histogram = true,
+            percentiles = {0.95, 0.99},
+            extraTags = {"mytag", "customhuman"}
+    )
     @RequestMapping(value="/humanrobot/{id}", method=RequestMethod.GET)
     public HumanRobot getHumanRobot(@PathVariable("id") Integer id) {
+        String result = "success"; // or something else
+        Metrics.counter("search.robot", "result", result).increment();
         return humanRobotService.getHumanRobot(id);
     }
 
