@@ -13,7 +13,7 @@ spring:
     consumer:
       group-id: myGroup3
 server:
-  port: 8083
+  port: 8084
 kafka:
   bootstrap-servers: localhost:9092
   topic: MyTestTopic2
