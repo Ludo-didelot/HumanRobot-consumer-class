@@ -5,12 +5,14 @@ import com.robot.humanrobot.model.HumanRobot;
 import com.robot.humanrobot.service.HumanRobotService;
 import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.instrument.Metrics;
+import io.micrometer.core.instrument.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -61,9 +63,12 @@ public class HumanRobotController {
     )
     @RequestMapping(value="/humanrobot/{id}", method=RequestMethod.GET)
     public HumanRobot getHumanRobot(@PathVariable("id") Integer id) {
-        String result = "success"; // or something else
-        Metrics.counter("search.robot", "result", result).increment();
-        return humanRobotService.getHumanRobot(id);
+        HumanRobot result = humanRobotService.getHumanRobot(id);
+        ArrayList<Tag> array  = new ArrayList();
+        array.add(Tag.of("my tag","my value"));
+        array.add(Tag.of("my tag2","my value2"));
+        Metrics.counter("search.robot", array).increment();
+        return result;
     }
 
     @RequestMapping(value="/startFullDataProcess", method=RequestMethod.GET)
